@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>와이파이 정보 구하기</title>
 </head>
 <body>
 
