@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th{
+	border: 1px solid white;
+	padding: 10px 5px 10px 5px;
+	background-color: #04AA6D;
+	color: white;
+}
+
+tr, td {
+	padding: 10px 5px 10px 5px;
+	border: 1px solid #D5D5D5;
+}
+
+tr:hover {
+	background-color:#D5D5D5;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.api {
+	text-align: center;
+}
+
+#bookmarkForm {
+	margin: 10px 0px 10px 0px;	
+}
+
+.addBookmarkGroupBnt {
+	margin: 10px 0px 10px 0px;
+}
+
+.addBookmark {
+	text-align: center;
+}
+
+.askDelete {
+	margin: 10px 0px 10px 0px;
+}
+
+.deleteBnt {
+	text-align: center;
+}
+
+.deleteLink {
+	display: block;
+	text-align: center;
+}
+
+.etc {
+	text-align: center;
+}
+
