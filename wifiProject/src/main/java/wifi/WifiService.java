@@ -19,6 +19,7 @@ public class WifiService {
 	private static final String API_KEY = "4541746348726a73313232427456437a";
 	private static OkHttpClient client;
 	private static Request.Builder builder;
+	private static int size;
 	private static String totalCount;
 	
 	public WifiService() {
@@ -32,7 +33,6 @@ public class WifiService {
 		Request request = builder.url(url).get().build();
 		Response response = client.newCall(request).execute();
 		
-		int size = 0;
 		if(response.isSuccessful()) {
 			ResponseBody body = response.body();
 			

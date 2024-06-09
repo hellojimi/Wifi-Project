@@ -31,7 +31,7 @@
 		<a href="bookmark/list.jsp">북마크 보기</a> | 
 		<a href="bookmarkGroup/group.jsp">북마크 그룹 관리</a>
 	</div>
-	<div style="margin: 10px 0px 10px 0px; ">
+	<div class="info">
 		LAT: <input type="text" id="lat" value="<%=lat %>" readonly />
 		LNT: <input type="text" id="lnt" value="<%=lnt %>" readonly />
 		<button onclick="askLocation()">내 위치 가져오기</button>
