@@ -132,7 +132,7 @@ public class BookmarkDAO {
 			pstmt = conn.prepareStatement(preSql);
 			pstmt.setString(1, bookmarkName);
 			
-			rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery(); 
 			
 			String sql = " INSERT INTO bookmark (group_id, wifi_name) "
 					   + " VALUES(?, ?); ";

@@ -22,16 +22,14 @@ public class WifiService {
 	private static String totalCount;
 	
 	public WifiService() {
-		client = new OkHttpClient.Builder().build();
+		client = new OkHttpClient();
 		builder = new Request.Builder();
 	}
 	
 	public int insertWifi(int start, int end) throws IOException {
 		String url = "http://openapi.seoul.go.kr:8088/" + API_KEY + "/json/TbPublicWifiInfo/" + start + "/" + end + "/";
 		
-		builder = new Request.Builder().url(url).get();
-		Request request = builder.build();
-		
+		Request request = builder.url(url).get().build();
 		Response response = client.newCall(request).execute();
 		
 		int size = 0;
@@ -39,13 +37,13 @@ public class WifiService {
 			ResponseBody body = response.body();
 			
 			if(body != null) {
-				List<WifiDTO> list = getWifiList(body.toString());
+				List<WifiDTO> list = getWifiList(body.string());
 				
 				WifiDAO wifi = new WifiDAO();
 				wifi.insertWifi(list);
 				
 				size += list.size();
-				while(size < Integer.parseInt(totalCount)) {
+				if(size < Integer.parseInt(totalCount)) {
 					insertWifi(start + 1000, end + 1000);
 				}
 			}
@@ -57,10 +55,10 @@ public class WifiService {
 	private List<WifiDTO> getWifiList(String body) {
 		
 		JsonParser parser = new JsonParser();
-		JsonObject object = (JsonObject) parser.parse(body);
+		JsonObject jsonObject = (JsonObject) parser.parse(body);
 		
-		String rowString = object.get("TbPublicWifiInfo").getAsJsonObject().get("row").toString();
-		totalCount = object.get("TbPublicWifiInfo").getAsJsonObject().get("list_total_count").toString();
+		String rowString = jsonObject.get("TbPublicWifiInfo").getAsJsonObject().get("row").toString();
+		totalCount = jsonObject.get("TbPublicWifiInfo").getAsJsonObject().get("list_total_count").toString();
 		
 		Gson gson = new Gson();
 		WifiDTO[] array = gson.fromJson(rowString, WifiDTO[].class);

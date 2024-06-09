@@ -9,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>와이파이 정보 구하기</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="../resource/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>

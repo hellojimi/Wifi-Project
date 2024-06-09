@@ -16,8 +16,7 @@
 <body>
 <%
 	WifiService wifi = new WifiService();
-	int size = 0;
-	// int size = wifi.insertWifi(0, 1000);
+	int size = wifi.insertWifi(1, 10);
 %>
 <div>
 	<h1><%=size %>개의 WIFI 정보를 정상적으로 저장하였습니다.</h1>

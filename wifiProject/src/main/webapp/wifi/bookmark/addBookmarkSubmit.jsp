@@ -13,7 +13,7 @@
 	request.setCharacterEncoding("UTF-8");
 
 	String wifiName = request.getParameter("wifiName");
-	String bookmarkName = request.getParameter("bookmarkName");
+	String bookmarkName = request.getParameter("bookmarkBox");
 	
 	BookmarkDAO bookmarkDAO = new BookmarkDAO();
 	bookmarkDAO.addBookmark(bookmarkName, wifiName);

@@ -1,3 +1,6 @@
+<%@page import="bookmarkGroup.BookmarkGroupDAO"%>
+<%@page import="bookmarkGroup.BookmarkGroupDTO"%>
+<%@page import="java.util.List"%>
 <%@page import="wifi.WifiDTO"%>
 <%@page import="wifi.WifiDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,7 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>와이파이 정보 구하기</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link href="../resource/style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -23,9 +26,20 @@
 		<a href="bookmark/list.jsp">북마크 보기</a> | 
 		<a href="bookmarkGroup/group.jsp">북마크 그룹 관리</a>
 	</div>
-	<form>
-		<select>
-			<option value="#">북마크 그룹 이름 선택</option>
+	<form id="bookmarkForm" name="bookmarkForm" action="bookmark/addBookmarkSubmit.jsp" method="post" onsubmit="return bookmarkCheck()">
+		<input type="hidden" name="wifiName" value=<%=wifi.getX_SWIFI_MAIN_NM() %>>
+		<select name="bookmarkBox" class="bookmarkBox">
+			<option value="">북마크 그룹 이름 선택</option>
+			<%
+			List<BookmarkGroupDTO> bookmarkGroupList = new BookmarkGroupDAO().getBookmarkGroupList();
+			if(bookmarkGroupList != null && !bookmarkGroupList.isEmpty()) {
+				for(BookmarkGroupDTO bookmark : bookmarkGroupList) {
+			%>
+					<option value="<%=bookmark.getName() %>"><%=bookmark.getName() %></option>
+			<%
+				}
+			}
+			%>
 		</select>
 		<input type="submit" value="북마크 추가하기">
 	</form>
@@ -109,5 +123,15 @@
 			}
 		%>																												
 	</table>
+	
+<script>
+	function bookmarkCheck() {		
+		if(document.querySelector('.bookmarkBox').value == "") {
+			alert("북마크를 선택해주세요.");
+			document.bookmarkForm.bookmarkBox.focus();
+			return false;
+		}
+	}
+</script>
 </body>
 </html>
