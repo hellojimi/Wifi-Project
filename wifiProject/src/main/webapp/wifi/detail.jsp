@@ -27,7 +27,7 @@
 		<a href="bookmarkGroup/group.jsp">북마크 그룹 관리</a>
 	</div>
 	<form id="bookmarkForm" name="bookmarkForm" action="bookmark/addBookmarkSubmit.jsp" method="post" onsubmit="return bookmarkCheck()">
-		<input type="hidden" name="wifiName" value=<%=wifi.getX_SWIFI_MAIN_NM() %>>
+		<input type="hidden" name="wifiName" value="<%=wifi.getX_SWIFI_MAIN_NM() %>">
 		<select name="bookmarkBox" class="bookmarkBox">
 			<option value="">북마크 그룹 이름 선택</option>
 			<%
